@@ -22,7 +22,6 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     int quantity = 0;
-    int pricePerCoffee = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void increment(View view){
         quantity = quantity + 1;
-        display(quantity );
-        displayPrice(quantity * pricePerCoffee);
+        displayQuantity(quantity );
+        displayPrice(calculatePrice(quantity));
 
     }
 
@@ -41,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         if (quantity > 0) {
             quantity = quantity - 1;
         }
-        display(quantity);
-        displayPrice(quantity * pricePerCoffee);
+        displayQuantity(quantity);
+        displayPrice(calculatePrice(quantity));
 
 
     }
@@ -51,21 +50,14 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view)
     {
+        displayMessage(createOrderSummary(5));
 
-        String message = "";
-        if (quantity <2){
-            message = "You ordered " + quantity + " coffee.";
-        }else{
-            message = "You ordered " + quantity + " coffees.";
-        }
-        message = message + "\n" + "Amount due: $" + quantity * pricePerCoffee + "\nThank you!";
-        displayMessage(message);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
+    private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(com.example.android.justjavaoop.R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
@@ -85,5 +77,56 @@ public class MainActivity extends AppCompatActivity {
         TextView priceTextView = (TextView) findViewById(com.example.android.justjavaoop.R.id.price_text_view);
         priceTextView.setText(message);
     }
+
+    /**
+     * Calculates the price of the order based on the current quantity.
+     *
+     * @return the price
+     */
+    private int calculatePrice() {
+        int price = quantity * 5;
+        return price;
+    }
+
+
+    /**
+     * Calculates the price of the order.
+     *
+     * @param quantity is the number of cups of coffee ordered
+     */
+    private int calculatePrice(int quantity) {
+        int price = quantity * 5;
+        return price;
+    }
+
+    /**
+     * Calculates the price of the order.
+     *
+     * @param quantity is the number of cups of coffee ordered
+     * @param pricePerCoffee in the local pricePerCoffee
+     */
+    private int calculatePrice(int quantity, int pricePerCoffee) {
+        int price = quantity * pricePerCoffee;
+        return price;
+    }
+
+    /**
+     * Display the order summary.
+     *
+     */
+    private String createOrderSummary(int pricePerCoffee) {
+        String message = "Name: Roy Louis L. Garcia\n";
+        if (quantity <2){
+            message = message + "You ordered " + quantity + " coffee.";
+        }else{
+            message = message + "You ordered " + quantity + " coffees.";
+        }
+        message = message + "\n" + "Amount due: $" + calculatePrice(quantity, pricePerCoffee) + "\nThank you!";
+        return message;
+
+    }
+
+
+
 
 }
