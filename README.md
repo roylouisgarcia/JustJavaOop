@@ -12,17 +12,9 @@ This repository is a project that I created for a Udacity course. This is my att
 
 ### Screenshot of the project
 
-<<<<<<< HEAD
-<img src="JustJavaOOP.png" alt="Screenshot" style="width: 200px;"/>
-
-
 ![Screenshot](justjava.jpg)
 
-=======
-![Screenshot](JustJavaOOP.png=200x200)
-![Screenshot](JustJavaOOP2.png=200x200)
-![Screenshot](JustJavaOOP3.png=200x200)
->>>>>>> 006fe57c0b4df3b06c24d16b8fb6114f1e67ca38
+
 
 ## Author
 
